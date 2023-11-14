@@ -1,0 +1,18 @@
+services:
+  workspace:
+    image: carlowiesse/ros:manipulation-training-2023
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - ROS_DISTRO=${ROS_DISTRO}
+    network_mode: host
+    devices:
+      - '/dev/dri/card0:/dev/dri/card0'
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+      - ./ros_workspace:/ros_workspace:rw
+    environment:
+      - DISPLAY=$DISPLAY
+      - QT_X11_NO_MITSHM=1
+      - XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR

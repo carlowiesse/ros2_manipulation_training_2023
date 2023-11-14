@@ -1,0 +1,6 @@
+services:
+  shell:
+    extends:
+      file: common.yaml
+      service: workspace
+    command: bash
