@@ -16,5 +16,5 @@ repositories:
 
   manipulation_training:
     type: git
-    url: https://carlowiesse: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@github.com/shalman-khan/ros2_manipulation_training_2023.git
+    url: https://carlowiesse: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@github.com/shalman-khan/ros2_training_manipulation_2023
     version: day1
