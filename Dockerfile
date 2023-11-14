@@ -8,7 +8,8 @@ SHELL ["/bin/bash", "-c"]
 # Set up workspace
 WORKDIR /ros_workspace/src
 COPY repos.txt .
-RUN vcs import < repos.txt
+RUN vcs import < repos.txt \
+ && rm -rf manipulation_training/students_copy/
 
 # Build workspace
 WORKDIR /ros_workspace
