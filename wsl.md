@@ -52,6 +52,13 @@
 2. Go to Settings
 3. Click on Resources and select WSL Integration
 4. Enable Ubuntu 22.04
+5. If you ever get the following message on a WSL terminal:
+
+    ```bash
+    -bash: /usr/bin/docker: No such file or directory
+    ```
+
+    Go to the Docker Desktop app and click on the 3 dots on the right of the bright green bar at the bottom left corner of the app window and select the Restart option
 
 # Other Dependencies
 

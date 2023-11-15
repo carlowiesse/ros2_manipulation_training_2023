@@ -24,19 +24,25 @@
     docker compose run shell
     ```
 
-5. Build workspace
+5. Go to workspace
 
     ```bash
-    cd /day1_ws && colcon build
+    cd day1_ws
     ```
 
-6. Source workspace
+6. Build workspace
+
+    ```bash
+    colcon build
+    ```
+
+7. Source workspace
 
     ```bash
     source install/setup.bash
     ```
 
-7. Run launch files
+8. Run launch files
 
     ```bash
     ros2 launch arm_urdf_pkg robot_arm_visual.launch.py

@@ -2,5 +2,5 @@ services:
   shell:
     extends:
       file: common.yaml
-      service: workspace
+      service: workspace # change to wsl-workspace if using WSL
     command: bash

@@ -1,20 +1,37 @@
 services:
-  workspace:
+  common:
     image: carlowiesse/ros:manipulation-training-2023
     build:
       context: .
       dockerfile: Dockerfile
+      target: dev
       args:
         - ROS_DISTRO=${ROS_DISTRO}
+        - USERNAME=${USERNAME}
     network_mode: host
-    devices:
-      - '/dev/dri/card0:/dev/dri/card0'
+    working_dir: /home/${USERNAME}
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
-      - ./ros_workspace:/ros_workspace:rw
-      - ./day1_ws:/day1_ws:rw
-      - ./day2_ws:/day2_ws:rw
+      - ./ur_ws:/home/${USERNAME}/ur_ws:rw
+      - ./day1_ws:/home/${USERNAME}/day1_ws:rw
+      - ./day2_ws:/home/${USERNAME}/day2_ws:rw
     environment:
       - DISPLAY=$DISPLAY
       - QT_X11_NO_MITSHM=1
       - XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR
+
+  workspace:
+    extends: common
+    devices:
+      - '/dev/dri/card0:/dev/dri/card0'
+
+  wsl-workspace:
+    extends: common
+    devices:
+      - '/dev/dxg:/dev/dxg'
+    volumes:
+      - /usr/lib/wsl:/usr/lib/wsl:ro
+      - /mnt/wslg:/mnt/wslg:ro
+    environment:
+      - LD_LIBRARY_PATH=/usr/lib/wsl/lib
+      - MESA_D3D12_DEFAULT_ADAPTER_NAME=NVIDIA # Comment this line if you don't have an NVIDIA GPU
