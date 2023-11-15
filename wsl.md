@@ -8,33 +8,25 @@
     wsl --install
     ```
 
-3. List Linux distros available for download through the online store
+3. Install Ubuntu 22.04
 
     ```bash
-    wsl --list --online
+    wsl --install -d Ubuntu-22.04
     ```
 
-4. Install additional Linux distributions after the initial install (optional)
+4. Set WSL version to 2
 
     ```bash
-    wsl --install -d <Distribution Name>
+    wsl --set-version Ubuntu-22.04 2
     ```
 
-    Where `<Distribution Name>` can be taken from the available Linux distros listed on the previos step
-
-5. Check the WSL version
+5. Set Ubuntu 22.04 as default WSL Linux distro
 
     ```bash
-    wsl --list --version
+    wsl --set-default Ubuntu-22.04
     ```
 
-    If WSL is using version 1, you have to upgrade to version 2
-
-    ```bash
-    wsl --set-version <Distribution Name> 2
-    ```
-
-    Where `<Distribution Name>` can be taken from the available Linux distros listed on the previos step
+6. Restart your computer
 
 # Xserver Installation
 
@@ -42,17 +34,31 @@
 
 2. Open a WSL terminal
 
-3. Add the `DISPLAY` variable to your `.bashrc`
+3. Add the `DISPLAY` variable to your `.bashrc` file
 
     ```bash
-    echo "export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0" >> ~/.bashrc
-    source ~/.bashrc
-    echo $DISPLAY
+    echo "export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0" >> ~/.bashrc && source ~/.bashrc
     ```
 
 4. Install Xserver dependecies for WSL Linux distro
 
     ```bash
-    sudo apt-get update
-    sudo apt-get install x11-apps x11-xserver-utils git python3-vcstool
+    sudo apt-get update && sudo apt-get install x11-apps x11-xserver-utils
+    ```
+
+# Docker WSL Setup
+
+1. Open Docker Desktop
+2. Go to Settings
+3. Click on Resources and select WSL Integration
+4. Enable Ubuntu 22.04
+
+# Other Dependencies
+
+1. Open a WSL terminal
+  
+2. Install some dependecies for WSL Linux distro
+
+    ```bash
+    sudo apt-get update && sudo apt-get install git python3-vcstool
     ```

@@ -38,19 +38,21 @@
 
 7. Install NVIDIA package for docker (optional)
 
-    <aside>
-    ⚠️ Only applicable if you have an NVIDIA driver installed
-    </aside>
+    > ⚠️ Only applicable if you have an NVIDIA driver installed
 
-- Add the NVIDIA Docker repository to your `sources.list.d` file
+    Download NVIDIA Docker’s official GPG key.
 
     ```bash
-    distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
     curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
-    curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
     ```
 
-- Install NVIDIA Docker package
+    Add the NVIDIA Docker repository to your `sources.list.d` file
+
+    ```bash
+    distribution=$(. /etc/os-release;echo $ID$VERSION_ID); curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+    ```
+
+    Install NVIDIA Docker package
 
     ```bash
     sudo apt-get update && sudo apt-get -y install nvidia-container-toolkit
@@ -62,8 +64,16 @@
     sudo systemctl restart docker
     ```
 
-9. If you encounter any problems using docker at this time, restart your system
+9. Restart your system
 
     ```bash
     sudo reboot
+    ```
+
+# Other Dependencies
+
+1. Install some dependecies
+
+    ```bash
+    sudo apt-get update && sudo apt-get install git python3-vcstool
     ```

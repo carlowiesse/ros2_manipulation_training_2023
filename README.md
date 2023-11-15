@@ -27,7 +27,7 @@
 5. Build workspace
 
     ```bash
-    cd /ros_workspace && colcon build
+    cd /day1_ws && colcon build
     ```
 
 6. Source workspace
