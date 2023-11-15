@@ -14,7 +14,12 @@ repositories:
     url: https://github.com/ros-planning/warehouse_ros_mongo.git
     version: ros2
 
-  manipulation_training:
+  day1:
     type: git
-    url: https://carlowiesse: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@github.com/shalman-khan/ros2_training_manipulation_2023
+    url: https://github.com/shalman-khan/ros2_training_manipulation_2023.git
     version: day1
+
+  day2:
+    type: git
+    url: https://github.com/ros-controls/ros2_control_demos.git
+    version: humble

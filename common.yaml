@@ -13,6 +13,7 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix:ro
       - ./ros_workspace:/ros_workspace:rw
       - ./day1_ws:/day1_ws:rw
+      - ./day2_ws:/day2_ws:rw
     environment:
       - DISPLAY=$DISPLAY
       - QT_X11_NO_MITSHM=1
