@@ -19,6 +19,21 @@
     ```bash
     wsl --install -d <Distribution Name>
     ```
+
+    Where `<Distribution Name>` can be taken from the available Linux distros listed on the previos step
+
+5. Check the WSL version
+
+    ```bash
+    wsl --list --version
+    ```
+
+    If WSL is using version 1, you have to upgrade to version 2
+
+    ```bash
+    wsl --set-version <Distribution Name> 2
+    ```
+
     Where `<Distribution Name>` can be taken from the available Linux distros listed on the previos step
 
 # Xserver Installation
@@ -32,48 +47,12 @@
     ```bash
     echo "export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0" >> ~/.bashrc
     source ~/.bashrc
+    echo $DISPLAY
     ```
 
 4. Install Xserver dependecies for WSL Linux distro
 
     ```bash
     sudo apt-get update
-    sudo apt-get install x11-apps
+    sudo apt-get install x11-apps x11-xserver-utils git python3-vcstool
     ```
-
-# GitHub/GitLab Installation
-
-1. Open a WSL terminal
-
-2. Install Git package
-
-    ```bash
-    sudo apt-get update
-    sudo apt-get -y install git xclip
-    ```
-
-3. Set account name
-
-    ```bash
-    git config --global user.name "your_name"
-    ```
-
-4. Set account email
-
-    ```bash
-    git config --global user.email "your_email@example.com"
-    ```
-
-5. Generate SSH key
-
-    ```bash
-    ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
-    ```
-
-6. Copy SSH key into clipboard
-
-    ```bash
-    xclip -sel ~/.ssh/id_rsa.pub
-    ```
-
-7. Now that you copied the generated SSH key to your clipboard, create a new SSH key on your GitHub account settings, and paste this one. Repeat this for your GitLab account (optional)
